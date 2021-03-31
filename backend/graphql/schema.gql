@@ -1,0 +1,14 @@
+type Bookmark {
+  link: String!
+  title: String!
+  desc: String!
+}
+
+type Query {
+  listBookmark: [Bookmark]!
+}
+
+type Mutation {
+  createBookmark( link: String! title: String! desc: String! ): String!
+  deleteBookmark(link: String!): String!
+}
