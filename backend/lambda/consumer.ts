@@ -2,27 +2,28 @@ const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 exports.handler = async(event:any) => {
 
-    console.log("The event coming from http data source is = ",event)
-    // const params = {
-    //     TableName: process.env.TodoTable,
-    //     Item: {
-    //         id: event.detail.id,
-    //         task: event.detail.task,
-    //         completed: event.detail.completed,
-    //     }
-    // };
+    console.log("The event coming from http data source is = ", event)
+    const params = {
+        TableName: process.env.BookmarkTable,
+        Item: {
+            id: event.detail.id,
+            title: event.detail.title,
+            desc: event.detail.desc,
+            url: event.detail.url
+        }
+    };
 
 
 
-    // try{
+    try{
 
-    //     await docClient.put(params).promise()
+        await docClient.put(params).promise()
         return event;
 
-    // }catch(err){
+    }catch(err){
 
-    //     console.log('DynamoDB error: ', err);
-    //     return null;
-    // }   
+        console.log('DynamoDB error: ', err);
+        return null;
+    }   
 
 }
