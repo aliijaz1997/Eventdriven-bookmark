@@ -12,5 +12,5 @@ type Query {
 
 type Mutation {
   createBookmark( id: ID! title: String! desc: String! url: String!): String!
-  deleteBookmark(id: ID!): String!
+  deleteBookmark(id: ID!): String
 }

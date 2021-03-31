@@ -82,7 +82,13 @@ export class BackendStack extends cdk.Stack {
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList()
 
     })
-
+    
+    DynamodbAsaDS.createResolver({
+      typeName: "Mutation",
+      fieldName: "deleteBookmark",
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbDeleteItem("id", "id"),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem()
+    })
 
     const consumerLambda = new lambda.Function(this, "EventBookmarkFunction", {
       runtime: lambda.Runtime.NODEJS_10_X,
