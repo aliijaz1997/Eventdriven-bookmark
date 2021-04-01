@@ -22,10 +22,13 @@
   },
   "dependencies": {
     "@aws-cdk/aws-appsync": "^1.95.1",
+    "@aws-cdk/aws-cloudfront-origins": "^1.95.1",
     "@aws-cdk/aws-dynamodb": "^1.95.1",
     "@aws-cdk/aws-events": "^1.95.1",
     "@aws-cdk/aws-events-targets": "^1.95.1",
     "@aws-cdk/aws-lambda": "^1.95.1",
+    "@aws-cdk/aws-s3": "^1.95.1",
+    "@aws-cdk/aws-s3-deployment": "^1.95.1",
     "@aws-cdk/core": "1.95.1",
     "source-map-support": "^0.5.16"
   }
