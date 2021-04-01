@@ -29,12 +29,32 @@ body {
   .button:hover {opacity: 1}
 
   .card {
-      min-width: 300px;
-      max-width: 400px;
+      min-width: 100px;
+      max-width: 300px;
+      max-height: 300px;
+      min-height: 300px;
       display: inline-block;
-      padding: 10px;
+      /* padding: 10px; */
       margin : 10px;
   }
   .content {
       background-color: rgb(133, 70, 12);
   }
+  .content1 {
+    background-color: rgb(167, 145, 125);
+}
+.content2 {
+    background-color: rgb(71, 90, 177);
+    min-height: 90px;
+}
+ .linkbutton {
+    background-color: #1d2c1d;
+    /* margin-top: 5px; */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}

@@ -6,10 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import shortid from "shortid";
-import { navigate } from "@reach/router"
 const APOLLO_Query = gql`
 {
   listBookmark {
@@ -25,7 +23,7 @@ mutation addNewBookmark ($id: ID! $title: String! $desc: String! $url: String!) 
   createBookmark (id: $id title: $title desc: $desc url: $url)
 }
 `
-const DELETE_BOOKMARKS = gql `
+const DELETE_BOOKMARKS = gql`
 mutation deletebookmark ($id: ID!) {
   deleteBookmark (id: $id)
 }
@@ -53,14 +51,14 @@ const IndexPage = () => {
     setUrl("");
     setDesc("");
   };
-const handleDelete = (id: string) => {
-   deleteBookmark({
-     variables: {
-       id,
-     },
-     refetchQueries: [{query: APOLLO_Query}]
-   })
-}
+  const handleDelete = (id: string) => {
+    deleteBookmark({
+      variables: {
+        id,
+      },
+      refetchQueries: [{ query: APOLLO_Query }]
+    })
+  }
   if (error) {
     return <h1>{error.message}</h1>
   }
@@ -72,8 +70,7 @@ const handleDelete = (id: string) => {
   }
   console.log(data)
   return (
-
-    <div className="Container">
+   <div className="Container">
       <h1 className="heading">BookMark Application</h1>
       <TextField
         color="primary"
@@ -107,24 +104,30 @@ const handleDelete = (id: string) => {
               <Typography gutterBottom variant="h5" component="h2">
                 {details.title}
               </Typography>
-              <Typography gutterBottom variant="subtitle1" component="h1">
+            </CardContent>
+            <CardContent className="content1" >
+              <Typography gutterBottom style={{fontSize: "110%"}} component="h1">
                 {details.url}
               </Typography>
-              <Typography gutterBottom variant="subtitle1" component="h1">
+            </CardContent>
+            <CardContent className="content2" >
+              <Typography gutterBottom  component="h1">
                 {details.desc}
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
-          <a href={`https://${details.url}`} target="_blank" rel="norefferer" >
-            <Button
-            >
-            Go to the {details.title} link 
-            </Button>
+            <a href={`https://${details.url}`} target="_blank" rel="norefferer" >
+              <button
+              className="linkbutton"
+              >
+                Go to the {details.title} link
+            </button>
             </a>
-            <Button
-            onClick={() => handleDelete(details.id)}
-            >Delete</Button>
+            <button
+              className="linkbutton"
+              onClick={() => handleDelete(details.id)}
+            >Delete</button>
           </CardActions>
         </Card>
       )}
